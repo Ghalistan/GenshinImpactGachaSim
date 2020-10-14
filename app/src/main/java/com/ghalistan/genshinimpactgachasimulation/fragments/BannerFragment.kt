@@ -1,18 +1,18 @@
 package com.ghalistan.genshinimpactgachasimulation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ghalistan.genshinimpactgachasimulation.adapters.MainAdapter
-import com.ghalistan.genshinimpactgachasimulation.viewModels.MainViewModel
-import com.ghalistan.genshinimpactgachasimulation.databinding.FragmentMainBinding
+import com.ghalistan.genshinimpactgachasimulation.adapters.BannerAdapter
+import com.ghalistan.genshinimpactgachasimulation.databinding.FragmentBannerBinding
+import com.ghalistan.genshinimpactgachasimulation.viewModels.BannerViewModel
 
-class MainFragment : Fragment() {
-    private var _binding: FragmentMainBinding? = null
+class BannerFragment : Fragment() {
+    private var _binding: FragmentBannerBinding? = null
     private val binding
         get() = _binding!!
 
@@ -20,7 +20,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentBannerBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -32,11 +32,11 @@ class MainFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
         mainViewModel.banners.observe(viewLifecycleOwner) { bannerData ->
             binding.progressBar.visibility = View.VISIBLE
             binding.rcBanner.apply {
-                adapter = MainAdapter(bannerData)
+                adapter = BannerAdapter(bannerData)
             }
         }
 

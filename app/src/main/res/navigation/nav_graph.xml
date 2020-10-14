@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/bannerFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.MainFragment"
+        android:id="@+id/bannerFragment"
+        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.BannerFragment"
         android:label="Banners"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_banner" >
         <action
             android:id="@+id/moveToDetailBannerFragment"
             app:destination="@id/detailBannerFragment" />

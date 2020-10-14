@@ -5,13 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ghalistan.genshinimpactgachasimulation.models.PullableModel
 import com.ghalistan.genshinimpactgachasimulation.databinding.ItemCharacterInfoBinding
+import com.ghalistan.genshinimpactgachasimulation.models.PullableModel
 import kotlinx.android.synthetic.main.item_character_info.view.*
 
-class DetailBannerAdapter(private val pullableData : List<PullableModel>) : RecyclerView.Adapter<DetailBannerAdapter.DetailBannerViewHolder>() {
-    class DetailBannerViewHolder(itemView: ItemCharacterInfoBinding) : RecyclerView.ViewHolder(itemView.root) {
-        fun bind(pullData : PullableModel) {
+class DetailBannerAdapter(private val pullableData: List<PullableModel>) :
+    RecyclerView.Adapter<DetailBannerAdapter.DetailBannerViewHolder>() {
+    class DetailBannerViewHolder(itemView: ItemCharacterInfoBinding) :
+        RecyclerView.ViewHolder(itemView.root) {
+        fun bind(pullData: PullableModel) {
             val item = pullData.pullableObject
             Glide.with(itemView.context)
                 .load(item.itemPict)
@@ -28,7 +30,8 @@ class DetailBannerAdapter(private val pullableData : List<PullableModel>) : Recy
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailBannerViewHolder {
-        val view = ItemCharacterInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view =
+            ItemCharacterInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DetailBannerViewHolder(view)
     }
 

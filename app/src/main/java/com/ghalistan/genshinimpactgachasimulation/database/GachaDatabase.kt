@@ -1,12 +1,15 @@
-package com.ghalistan.genshinimpactgachasimulation
+package com.ghalistan.genshinimpactgachasimulation.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ghalistan.genshinimpactgachasimulation.daos.BannerDao
+import com.ghalistan.genshinimpactgachasimulation.daos.UserDao
+import com.ghalistan.genshinimpactgachasimulation.models.UserModel
 
-public abstract class GachaDatabase : RoomDatabase() {
-    abstract fun bannerDao(): BannerDao
+@Database(entities = [UserModel::class], version = 1)
+abstract class GachaDatabase : RoomDatabase() {
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile

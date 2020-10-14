@@ -11,9 +11,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.ghalistan.genshinimpactgachasimulation.adapters.DetailBannerAdapter
+import com.ghalistan.genshinimpactgachasimulation.databinding.FragmentDetailBannerBinding
 import com.ghalistan.genshinimpactgachasimulation.models.PullableModel
 import com.ghalistan.genshinimpactgachasimulation.viewModels.DetailBannerViewModel
-import com.ghalistan.genshinimpactgachasimulation.databinding.FragmentDetailBannerBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -46,7 +46,10 @@ class DetailBannerFragment : Fragment(), View.OnClickListener {
         binding.progressBar.visibility = View.VISIBLE
         binding.detailBannerContainer.visibility = View.GONE
 
-        val detailViewModel = ViewModelProvider(this, DetailBannerViewModel.FACTORY(bannerName)).get(DetailBannerViewModel::class.java)
+        val detailViewModel =
+            ViewModelProvider(this, DetailBannerViewModel.FACTORY(bannerName)).get(
+                DetailBannerViewModel::class.java
+            )
 
         detailViewModel.getPullables().observe(viewLifecycleOwner, { pullableData ->
             fiveStar = detailViewModel.specificPullables(pullableData, 5)

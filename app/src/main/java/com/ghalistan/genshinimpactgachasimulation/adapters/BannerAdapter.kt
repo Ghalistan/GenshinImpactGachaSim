@@ -5,19 +5,21 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ghalistan.genshinimpactgachasimulation.fragments.MainFragmentDirections
-import com.ghalistan.genshinimpactgachasimulation.models.BannerModel
 import com.ghalistan.genshinimpactgachasimulation.databinding.ItemBannerLayoutBinding
+import com.ghalistan.genshinimpactgachasimulation.fragments.BannerFragmentDirections
+import com.ghalistan.genshinimpactgachasimulation.models.BannerModel
 import kotlinx.android.synthetic.main.item_banner_layout.view.*
 
-class MainAdapter(private val banners: List<BannerModel>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class BannerAdapter(private val banners: List<BannerModel>) :
+    RecyclerView.Adapter<BannerAdapter.MainViewHolder>() {
 
-    class MainViewHolder(itemView: ItemBannerLayoutBinding) : RecyclerView.ViewHolder(itemView.root) {
+    class MainViewHolder(itemView: ItemBannerLayoutBinding) :
+        RecyclerView.ViewHolder(itemView.root) {
         fun bind(bannerData: BannerModel) {
             itemView.tv_banner_title.text = bannerData.name
 
-            itemView.cardBody.setOnClickListener{
-                val action = MainFragmentDirections.moveToDetailBannerFragment(bannerData.name)
+            itemView.cardBody.setOnClickListener {
+                val action = BannerFragmentDirections.moveToDetailBannerFragment(bannerData.name)
                 itemView.findNavController().navigate(action)
             }
 
@@ -28,7 +30,8 @@ class MainAdapter(private val banners: List<BannerModel>) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val view = ItemBannerLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view =
+            ItemBannerLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(view)
     }
 

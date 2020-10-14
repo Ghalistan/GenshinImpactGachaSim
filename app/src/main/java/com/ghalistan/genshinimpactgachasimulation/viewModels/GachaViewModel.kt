@@ -31,11 +31,13 @@ class GachaViewModel(private val pullData: List<PullableModel>) : ViewModel() {
         }
     }
 
-    fun generateItemOnlyList() {
+    private fun generateItemOnlyList() {
         val placeholder = mutableListOf<ItemModel>()
+
         for (data in pullData) {
             placeholder.add(data.pullableObject)
         }
+
         itemPullable = placeholder
     }
 }

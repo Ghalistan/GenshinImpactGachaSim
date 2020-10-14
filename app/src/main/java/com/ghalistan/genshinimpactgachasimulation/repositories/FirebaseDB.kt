@@ -24,32 +24,34 @@ class FirebaseDB {
         get() = _pullableData
 
     fun getDetailBannerData(bannerName: String) {
-        database.child("Banners").child(bannerName).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                _bannerData.value = snapshot.getValue(BannerModel::class.java)
-            }
+        database.child("Banners").child(bannerName)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    _bannerData.value = snapshot.getValue(BannerModel::class.java)
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.w("GIGS", "Error fetching detail banner: ", error.toException())
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w("GIGS", "Error fetching detail banner: ", error.toException())
+                }
 
-        })
+            })
     }
 
     fun getPullablesData(bannerName: String) {
-        database.child("Pullables").child(bannerName).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val placeholder = mutableListOf<PullableModel>()
-                for (pullable in snapshot.children) {
-                    placeholder.add(pullable.getValue(PullableModel::class.java)!!)
+        database.child("Pullables").child(bannerName)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val placeholder = mutableListOf<PullableModel>()
+                    for (pullable in snapshot.children) {
+                        placeholder.add(pullable.getValue(PullableModel::class.java)!!)
+                    }
+                    _pullableData.value = placeholder
                 }
-                _pullableData.value = placeholder
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.w("GIGS", "Error fetching pullable data: ", error.toException())
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w("GIGS", "Error fetching pullable data: ", error.toException())
+                }
 
-        })
+            })
     }
 }

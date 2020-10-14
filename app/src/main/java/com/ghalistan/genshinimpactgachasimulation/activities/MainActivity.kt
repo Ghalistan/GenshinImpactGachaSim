@@ -1,11 +1,14 @@
 package com.ghalistan.genshinimpactgachasimulation.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.*
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.ghalistan.genshinimpactgachasimulation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.actualAppBar)
 
-        val host = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
+        val host =
+            supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         val navController = host.navController
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.mainDrawerLayout)
 

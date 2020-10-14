@@ -8,8 +8,10 @@ import com.ghalistan.genshinimpactgachasimulation.databinding.ItemCharacterInfoB
 import com.ghalistan.genshinimpactgachasimulation.models.ItemModel
 import kotlinx.android.synthetic.main.item_character_info.view.*
 
-class GachaAdapter(private val itemData: List<ItemModel>) : RecyclerView.Adapter<GachaAdapter.GachaViewHolder>() {
-    class GachaViewHolder(itemView: ItemCharacterInfoBinding) : RecyclerView.ViewHolder(itemView.root) {
+class GachaAdapter(private val itemData: List<ItemModel>) :
+    RecyclerView.Adapter<GachaAdapter.GachaViewHolder>() {
+    class GachaViewHolder(itemView: ItemCharacterInfoBinding) :
+        RecyclerView.ViewHolder(itemView.root) {
         fun bind(data: ItemModel) {
             Glide.with(itemView.context)
                 .load(data.itemPict)
@@ -24,7 +26,8 @@ class GachaAdapter(private val itemData: List<ItemModel>) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GachaViewHolder {
-        val view = ItemCharacterInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view =
+            ItemCharacterInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GachaViewHolder(view)
     }
 

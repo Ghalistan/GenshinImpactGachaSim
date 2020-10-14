@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/mainFragment"
+            android:id="@+id/bannerFragment"
             android:title="Banners" />
         <item
             android:id="@+id/optionsFragment"
