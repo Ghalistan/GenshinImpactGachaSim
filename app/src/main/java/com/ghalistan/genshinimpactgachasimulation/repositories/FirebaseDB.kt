@@ -51,7 +51,6 @@ class FirebaseDB {
                 override fun onCancelled(error: DatabaseError) {
                     Log.w("GIGS", "Error fetching pullable data: ", error.toException())
                 }
-
             })
     }
 }

@@ -22,9 +22,7 @@ class DetailBannerFragment : Fragment(), View.OnClickListener {
     private val binding
         get() = _binding!!
 
-    private var fiveStar = listOf<PullableModel>()
-    private var fourStar = listOf<PullableModel>()
-    private var threeStar = listOf<PullableModel>()
+    private var itemPullable = listOf<PullableModel>()
     private lateinit var bannerName: String
 
     override fun onCreateView(
@@ -52,26 +50,11 @@ class DetailBannerFragment : Fragment(), View.OnClickListener {
             )
 
         detailViewModel.getPullables().observe(viewLifecycleOwner, { pullableData ->
-            fiveStar = detailViewModel.specificPullables(pullableData, 5)
-            fourStar = detailViewModel.specificPullables(pullableData, 4)
-            threeStar = detailViewModel.specificPullables(pullableData, 3)
-
+            itemPullable = detailViewModel.shortItem(pullableData)
             binding.rvFiveStarChar.apply {
                 layoutManager = LinearLayoutManager(activity)
                 setHasFixedSize(true)
-                adapter = DetailBannerAdapter(fiveStar)
-            }
-
-            binding.rvFourStarChar.apply {
-                layoutManager = LinearLayoutManager(activity)
-                setHasFixedSize(true)
-                adapter = DetailBannerAdapter(fourStar)
-            }
-
-            binding.rvThreeStar.apply {
-                layoutManager = LinearLayoutManager(activity)
-                setHasFixedSize(true)
-                adapter = DetailBannerAdapter(threeStar)
+                adapter = DetailBannerAdapter(itemPullable)
             }
 
             binding.btnSinglePull.setOnClickListener(this)
@@ -107,8 +90,7 @@ class DetailBannerFragment : Fragment(), View.OnClickListener {
             else -> Unit
         }
 
-        val allPullable = listOf(fiveStar, fourStar, threeStar).flatten()
-        val action = DetailBannerFragmentDirections.doGacha(allPullable.toTypedArray(), onePull)
+        val action = DetailBannerFragmentDirections.doGacha(itemPullable.toTypedArray(), onePull)
 
         MaterialAlertDialogBuilder(v.context)
             .setTitle("${pullAmount}x Pull on ${bannerName}")

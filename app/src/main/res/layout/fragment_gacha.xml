@@ -1,13 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.GachaFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_characterResult"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_character_info" />
-</ScrollView>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_pity_stack_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pity Stack Status"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/pityStackView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_pity_stack_status"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90 Pull left until guaranteed 5 Star"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_pity_stack_status" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 Pull left until guaranteed 4 Star"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_pity_stack_status" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_gacha_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gacha Results"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pityStackView"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_characterResult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_character_info"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_gacha_result"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_do_more_pull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do More Pull?"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/rv_characterResult"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/btn_single_pull"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1x Pull"
+            android:layout_margin="10dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toBottomOf="@id/tv_do_more_pull"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_ten_pull"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/btn_ten_pull"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="10x Pull"
+            android:layout_margin="10dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toBottomOf="@id/tv_do_more_pull"
+            app:layout_constraintStart_toEndOf="@id/btn_single_pull"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/backToHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Go To Main Menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_single_pull"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

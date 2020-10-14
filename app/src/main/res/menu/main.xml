@@ -3,9 +3,17 @@
     <group>
         <item
             android:id="@+id/bannerFragment"
+            android:icon="@drawable/ic_banner"
             android:title="Banners" />
         <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile" />
+    </group>
+    <group>
+        <item
             android:id="@+id/optionsFragment"
-            android:title="Options" />
+            android:icon="@drawable/ic_setting"
+            android:title="Options"></item>
     </group>
 </menu>

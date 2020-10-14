@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ghalistan.genshinimpactgachasimulation.adapters.GachaAdapter
@@ -45,5 +46,9 @@ class GachaFragment : Fragment() {
                 adapter = GachaAdapter(data)
             }
         })
+
+        binding.backToHome.setOnClickListener {
+            findNavController().navigate(GachaFragmentDirections.goBackHome())
+        }
     }
 }

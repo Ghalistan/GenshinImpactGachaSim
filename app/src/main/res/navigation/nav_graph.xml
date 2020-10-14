@@ -39,10 +39,18 @@
             android:name="onePull"
             app:argType="boolean"
             android:defaultValue="true" />
+        <action
+            android:id="@+id/goBackHome"
+            app:popUpTo="@id/bannerFragment" />
     </fragment>
     <fragment
         android:id="@+id/optionsFragment"
         android:name="com.ghalistan.genshinimpactgachasimulation.fragments.OptionsFragment"
         android:label="Options "
         tools:layout="@layout/fragment_options" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

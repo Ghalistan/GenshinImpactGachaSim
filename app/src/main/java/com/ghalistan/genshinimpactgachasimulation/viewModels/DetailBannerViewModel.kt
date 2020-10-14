@@ -29,7 +29,7 @@ class DetailBannerViewModel(private val bannerName: String) : ViewModel() {
         return pullableData
     }
 
-    fun specificPullables(pullable: List<PullableModel>, rarity: Int): List<PullableModel> {
-        return GachaLogic().getSpecificRarity(pullable, rarity)
+    fun shortItem(itemData: List<PullableModel>): List<PullableModel> {
+        return GachaLogic().shortPullableItem(itemData)
     }
 }
