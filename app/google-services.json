@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "118676071261",
+    "firebase_url": "https://genshin-impact-gacha-sim.firebaseio.com",
+    "project_id": "genshin-impact-gacha-sim",
+    "storage_bucket": "genshin-impact-gacha-sim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118676071261:android:8c3dc905d7f994af0bbeb4",
+        "android_client_info": {
+          "package_name": "com.ghalistan.genshinimpactgachasimulation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118676071261-otovmpn6m1bubvdt5ihqkf1gk8e99vcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4gFVnOINJyTeMKkIITZPWMf8g3FTuRdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118676071261-otovmpn6m1bubvdt5ihqkf1gk8e99vcs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

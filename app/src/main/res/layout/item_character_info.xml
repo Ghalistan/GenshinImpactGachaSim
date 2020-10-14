@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/characterPict"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/amber_thumb"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_margin="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/characterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character Name"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintStart_toEndOf="@id/characterPict"
+        app:layout_constraintTop_toTopOf="@id/characterPict" />
+
+    <TextView
+        android:id="@+id/tv_rate_up"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(Rate Up)"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="5dp"
+        app:layout_constraintStart_toEndOf="@id/characterName"
+        app:layout_constraintTop_toTopOf="@id/characterName"
+        app:layout_constraintBottom_toBottomOf="@id/characterName" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/rb_character_rarity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:ratingBarStyleSmall"
+        android:numStars="4"
+        android:rating="4"
+        android:isIndicator="true"
+        app:layout_constraintStart_toStartOf="@id/characterName"
+        app:layout_constraintBottom_toBottomOf="@id/characterPict" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

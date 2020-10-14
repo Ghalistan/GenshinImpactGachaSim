@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.MainFragment"
+        android:label="Banners"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/moveToDetailBannerFragment"
+            app:destination="@id/detailBannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBannerFragment"
+        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.DetailBannerFragment"
+        android:label="fragment_detail_banner"
+        tools:layout="@layout/fragment_detail_banner">
+        <argument
+            android:name="bannerName"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/doGacha"
+            app:destination="@id/gachaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gachaFragment"
+        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.GachaFragment"
+        android:label="Gacha Result"
+        tools:layout="@layout/fragment_gacha" >
+        <argument
+            android:name="pullableData"
+            app:argType="com.ghalistan.genshinimpactgachasimulation.models.PullableModel[]" />
+        <argument
+            android:name="onePull"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.ghalistan.genshinimpactgachasimulation.fragments.OptionsFragment"
+        android:label="Options "
+        tools:layout="@layout/fragment_options" />
+</navigation>
