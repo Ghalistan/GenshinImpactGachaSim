@@ -9,7 +9,7 @@
         android:id="@+id/bannerFragment"
         android:name="com.ghalistan.genshinimpactgachasimulation.fragments.BannerFragment"
         android:label="Banners"
-        tools:layout="@layout/fragment_banner" >
+        tools:layout="@layout/fragment_banner">
         <action
             android:id="@+id/moveToDetailBannerFragment"
             app:destination="@id/detailBannerFragment" />
@@ -31,7 +31,7 @@
         android:id="@+id/gachaFragment"
         android:name="com.ghalistan.genshinimpactgachasimulation.fragments.GachaFragment"
         android:label="Gacha Result"
-        tools:layout="@layout/fragment_gacha" >
+        tools:layout="@layout/fragment_gacha">
         <argument
             android:name="pullableData"
             app:argType="com.ghalistan.genshinimpactgachasimulation.models.PullableModel[]" />
@@ -51,6 +51,6 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.ghalistan.genshinimpactgachasimulation.fragments.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

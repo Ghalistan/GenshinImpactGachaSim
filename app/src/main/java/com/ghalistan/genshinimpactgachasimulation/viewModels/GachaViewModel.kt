@@ -1,37 +1,51 @@
 package com.ghalistan.genshinimpactgachasimulation.viewModels
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.ghalistan.genshinimpactgachasimulation.database.GachaDatabase
 import com.ghalistan.genshinimpactgachasimulation.models.ItemModel
 import com.ghalistan.genshinimpactgachasimulation.models.PullableModel
+import com.ghalistan.genshinimpactgachasimulation.repositories.RoomRepo
 import com.ghalistan.genshinimpactgachasimulation.utils.GachaLogic
-import com.ghalistan.genshinimpactgachasimulation.utils.viewModelHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class GachaViewModel(private val pullData: List<PullableModel>) : ViewModel() {
+class GachaViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var itemPullable: List<ItemModel>
+    private val roomRepo: RoomRepo
 
     private var _pullResult = MutableLiveData<List<ItemModel>>()
     val pullResult: LiveData<List<ItemModel>>
         get() = _pullResult
 
     init {
-        generateItemOnlyList()
-    }
-
-    companion object {
-        val FACTORY = viewModelHelper(::GachaViewModel)
+        val database = GachaDatabase.getDatabase(application, viewModelScope)
+        val userDao = database.userDao()
+        val itemDao = database.itemDao()
+        roomRepo = RoomRepo(userDao, itemDao)
     }
 
     fun doGachaProcess(onePull: Boolean) {
+        val gachaMachine = GachaLogic()
+        var gachaResult: List<ItemModel>
+
         if (onePull) {
-            _pullResult.value = GachaLogic().doGacha(itemPullable, 1)
+            gachaResult = gachaMachine.doGacha(itemPullable, 1)
+            _pullResult.value = gachaResult
         } else {
-            _pullResult.value = GachaLogic().doGacha(itemPullable, 10)
+            gachaResult = gachaMachine.doGacha(itemPullable, 10)
+            _pullResult.value = gachaResult
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            roomRepo.insertItems(gachaResult)
         }
     }
 
-    private fun generateItemOnlyList() {
+    fun generateItemOnlyList(pullData: List<PullableModel>) {
         val placeholder = mutableListOf<ItemModel>()
 
         for (data in pullData) {

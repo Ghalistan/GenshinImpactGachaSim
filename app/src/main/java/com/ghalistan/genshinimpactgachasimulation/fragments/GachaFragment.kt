@@ -34,10 +34,8 @@ class GachaFragment : Fragment() {
 
         val safeArgs: GachaFragmentArgs by navArgs()
         itemData = safeArgs.pullableData.toList()
-        val gachaViewModel = ViewModelProvider(
-            this,
-            GachaViewModel.FACTORY(itemData)
-        ).get(GachaViewModel::class.java)
+        val gachaViewModel = ViewModelProvider(this).get(GachaViewModel::class.java)
+        gachaViewModel.generateItemOnlyList(itemData)
         gachaViewModel.doGachaProcess(safeArgs.onePull)
         gachaViewModel.pullResult.observe(viewLifecycleOwner, { data ->
             binding.rvCharacterResult.apply {

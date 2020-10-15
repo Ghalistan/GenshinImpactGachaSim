@@ -3,9 +3,8 @@ package com.ghalistan.genshinimpactgachasimulation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import com.ghalistan.genshinimpactgachasimulation.databinding.ItemCharacterInfoBinding
 import com.ghalistan.genshinimpactgachasimulation.models.PullableModel
 import kotlinx.android.synthetic.main.item_character_info.view.*
@@ -36,9 +35,7 @@ class DetailBannerAdapter(private val pullableData: List<PullableModel>) :
             itemView.tv_rate_up.visibility = if (pullData.featuredItem) View.VISIBLE else View.GONE
 
             val item = pullData.pullableObject
-            Glide.with(itemView.context)
-                .load(item.itemPict)
-                .into(itemView.characterPict)
+            itemView.characterPict.load(item.itemPict)
 
             itemView.characterName.text = item.name
             itemView.rb_character_rarity.apply {

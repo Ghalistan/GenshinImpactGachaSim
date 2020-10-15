@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel.user.observe(this, { data ->
             binding.navView.tv_header_nav.text = data[0].username
+            binding.navView.tv_primogem_amount.text = data[0].primogem.toString()
         })
     }
 

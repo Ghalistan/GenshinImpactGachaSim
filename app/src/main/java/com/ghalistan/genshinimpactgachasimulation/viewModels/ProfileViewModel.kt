@@ -5,16 +5,21 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.ghalistan.genshinimpactgachasimulation.database.GachaDatabase
+import com.ghalistan.genshinimpactgachasimulation.models.ItemModel
 import com.ghalistan.genshinimpactgachasimulation.models.UserModel
-import com.ghalistan.genshinimpactgachasimulation.repositories.UserRepo
+import com.ghalistan.genshinimpactgachasimulation.repositories.RoomRepo
 
 class ProfileViewModel(application: Application) : AndroidViewModel(application) {
-    private val userRepo: UserRepo
+    private val roomRepo: RoomRepo
     val user: LiveData<List<UserModel>>
+    val item: LiveData<List<ItemModel>>
 
     init {
-        val userDao = GachaDatabase.getDatabase(application, viewModelScope).userDao()
-        userRepo = UserRepo(userDao)
-        user = userRepo.getUser
+        val database = GachaDatabase.getDatabase(application, viewModelScope)
+        val userDao = database.userDao()
+        val itemDao = database.itemDao()
+        roomRepo = RoomRepo(userDao, itemDao)
+        user = roomRepo.getUser
+        item = roomRepo.getItem
     }
 }

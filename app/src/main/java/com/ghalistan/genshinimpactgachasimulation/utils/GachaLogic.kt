@@ -28,7 +28,10 @@ class GachaLogic {
         return listOf(fiveStar, fourStar, threeStar).flatten()
     }
 
-    fun doGacha(pullData: List<ItemModel>, gachaPullAmount: Int): List<ItemModel> {
+    fun doGacha(
+        pullData: List<ItemModel>,
+        gachaPullAmount: Int,
+    ): List<ItemModel> {
 
         val splitedData = splitItemRarity(pullData)
         val tempResultItem = mutableListOf<ItemModel>()

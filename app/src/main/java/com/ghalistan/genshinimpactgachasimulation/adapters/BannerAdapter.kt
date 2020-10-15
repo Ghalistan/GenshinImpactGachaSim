@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import com.ghalistan.genshinimpactgachasimulation.databinding.ItemBannerLayoutBinding
 import com.ghalistan.genshinimpactgachasimulation.fragments.BannerFragmentDirections
 import com.ghalistan.genshinimpactgachasimulation.models.BannerModel
@@ -23,9 +23,7 @@ class BannerAdapter(private val banners: List<BannerModel>) :
                 itemView.findNavController().navigate(action)
             }
 
-            Glide.with(itemView)
-                .load(bannerData.bannerPict)
-                .into(itemView.iv_banner)
+            itemView.iv_banner.load(bannerData.bannerPict)
         }
     }
 

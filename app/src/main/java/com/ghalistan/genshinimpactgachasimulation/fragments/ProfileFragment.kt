@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ghalistan.genshinimpactgachasimulation.adapters.ProfileAdapter
 import com.ghalistan.genshinimpactgachasimulation.databinding.FragmentProfileBinding
 import com.ghalistan.genshinimpactgachasimulation.viewModels.ProfileViewModel
 
@@ -27,8 +28,18 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-        profileViewModel.user.observe(viewLifecycleOwner, {
-            binding.tvUsername.text = it[0].username
+
+        profileViewModel.user.observe(viewLifecycleOwner, { user ->
+            binding.tvUsername.text = user[0].username
+            binding.tvPrimogem.text = user[0].primogem.toString()
+        })
+
+        profileViewModel.item.observe(viewLifecycleOwner, { item ->
+            binding.rvItemOwned.apply {
+                layoutManager = LinearLayoutManager(activity)
+                setHasFixedSize(true)
+                adapter = ProfileAdapter(item)
+            }
         })
     }
 }

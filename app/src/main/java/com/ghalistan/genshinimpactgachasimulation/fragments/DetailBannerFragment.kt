@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
+import coil.load
 import com.ghalistan.genshinimpactgachasimulation.adapters.DetailBannerAdapter
 import com.ghalistan.genshinimpactgachasimulation.databinding.FragmentDetailBannerBinding
 import com.ghalistan.genshinimpactgachasimulation.models.PullableModel
@@ -63,9 +63,8 @@ class DetailBannerFragment : Fragment(), View.OnClickListener {
 
         detailViewModel.getBannerData().observe(viewLifecycleOwner, { bannerData ->
             binding.tvBannerTitle.text = bannerData.name
-            Glide.with(this)
-                .load(bannerData.bannerPict)
-                .into(binding.ivBanner)
+
+            binding.ivBanner.load(bannerData.bannerPict)
 
             binding.detailBannerContainer.visibility = View.VISIBLE
             binding.progressBar.visibility = View.GONE
